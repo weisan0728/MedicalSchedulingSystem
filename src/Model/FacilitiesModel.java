@@ -30,13 +30,14 @@ public class FacilitiesModel {
         }
     }
 
-    public void updateFacilityStatus(String type, String name, String status) throws SQLException {
-        String query = "UPDATE facilities SET status = ? WHERE type = ? AND name = ?";
+    public void updateFacilityStatus(String type, String name, String status, String location) throws SQLException {
+        String query = "UPDATE facilities SET status = ? WHERE type = ? AND name = ? AND location = ?";
         try (Connection con = Connection_Provider.getCon();
              PreparedStatement ps = con.prepareStatement(query)) {
             ps.setString(1, status);
             ps.setString(2, type);
             ps.setString(3, name);
+            ps.setString(4, location);
             ps.executeUpdate();
         }
     }

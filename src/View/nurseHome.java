@@ -1232,7 +1232,7 @@ public class nurseHome extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Type", "Name", "Location", "Status"
+                "Type", "Name", "Status", "Location"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -2012,10 +2012,10 @@ public class nurseHome extends javax.swing.JFrame {
 
             while (rsFacilities.next()) {
                 facilitiesModel.addRow(new Object[]{
-                    rsFacilities.getString(1),
-                    rsFacilities.getString(2),
-                    rsFacilities.getString(3),
-                    rsFacilities.getString(4)
+                    rsFacilities.getString("type"),
+                    rsFacilities.getString("name"),
+                    rsFacilities.getString("location"),
+                    rsFacilities.getString("status")
                 });
             }
             rsFacilities.close();

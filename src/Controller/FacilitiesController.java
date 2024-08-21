@@ -148,8 +148,9 @@ public class FacilitiesController {
 
         String facilitiesType = tableModel.getValueAt(selectedRow, 0).toString();
         String facilitiesName = tableModel.getValueAt(selectedRow, 1).toString();
-        String currentStatus = tableModel.getValueAt(selectedRow, 2).toString();
-
+        String location = tableModel.getValueAt(selectedRow, 2).toString();
+        String currentStatus = tableModel.getValueAt(selectedRow, 3).toString();
+        
         String newStatus = currentStatus.equals("Available") ? "Unavailable" : "Available";
 
         int choice = JOptionPane.showConfirmDialog(view,
@@ -159,9 +160,9 @@ public class FacilitiesController {
 
         if (choice == JOptionPane.YES_OPTION) {
             try {
-                model.updateFacilityStatus(facilitiesType, facilitiesName, newStatus);
+                model.updateFacilityStatus(facilitiesType, facilitiesName, newStatus, location);
                 JOptionPane.showMessageDialog(view, "Facilities status updated successfully!");
-                tableModel.setValueAt(newStatus, selectedRow, 2);
+                tableModel.setValueAt(newStatus, selectedRow, 3);
             } catch (SQLException e) {
                 JOptionPane.showMessageDialog(view, "Error updating facilities status: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 e.printStackTrace();
